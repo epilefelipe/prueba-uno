@@ -1,0 +1,450 @@
+<mxfile host="Electron" modified="2026-05-01T00:00:00.000Z" agent="opencode" version="24.0.0" type="device">
+  <diagram id="use-case-diagram" name="Use Case Diagram">
+    <mxGraphModel dx="1422" dy="764" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Background gradient -->
+        <mxCell id="bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#E2E8F0;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1080" height="730" as="geometry" />
+        </mxCell>
+
+        <!-- Header -->
+        <mxCell id="header-bar" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1E293B;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1080" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="title-main" value="Payment Processing Platform" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontColor=#F8FAFC;fontStyle=1;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="70" y="35" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="title-sub" value="Use Case Diagram — Merchant &amp; Transaction Management" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#94A3B8;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="70" y="65" width="500" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Actor: Merchant User -->
+        <mxCell id="actor-merchant" value="Merchant&#xa;User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=none;strokeColor=#3B82F6;labelPosition=center;align=center;fontSize=13;fontColor=#1E293B;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="140" y="160" width="50" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- System Boundary Box -->
+        <mxCell id="system-box" value="PAYMENT PROCESSING SYSTEM" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;strokeColor=#94A3B8;strokeWidth=2;fillColor=none;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;fontSize=11;fontColor=#64748B;fontStyle=1;spacing=5;spacingTop=-10;" vertex="1" parent="1">
+          <mxGeometry x="340" y="130" width="680" height="580" as="geometry" />
+        </mxCell>
+
+        <!-- LEFT COLUMN - Core Operations -->
+        <mxCell id="col1-title" value="CORE OPERATIONS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#64748B;fontStyle=1;letterSpacing=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="145" width="200" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc-create-merchant" value="Create Merchant" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=2;fontColor=#1E40AF;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="380" y="185" width="160" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc-create-transaction" value="Create Transaction" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=2;fontColor=#1E40AF;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="380" y="270" width="160" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc-authorize" value="Authorize Transaction" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#10B981;strokeWidth=2;fontColor=#065F46;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="380" y="355" width="160" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc-retry" value="Retry Authorization" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F59E0B;strokeWidth=2;fontColor=#92400E;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="380" y="440" width="160" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- RIGHT COLUMN - Query Operations -->
+        <mxCell id="col2-title" value="QUERY OPERATIONS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#64748B;fontStyle=1;letterSpacing=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="145" width="200" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc-list-transactions" value="List Transactions" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F5F3FF;strokeColor=#8B5CF6;strokeWidth=2;fontColor=#5B21B6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="620" y="185" width="160" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc-view-transaction" value="View Transaction Detail" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F5F3FF;strokeColor=#8B5CF6;strokeWidth=2;fontColor=#5B21B6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="620" y="270" width="160" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc-view-audit" value="View Audit Trail" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F5F3FF;strokeColor=#8B5CF6;strokeWidth=2;fontColor=#5B21B6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="620" y="355" width="160" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc-list-auths" value="List Authorizations" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F5F3FF;strokeColor=#8B5CF6;strokeWidth=2;fontColor=#5B21B6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="620" y="440" width="160" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Actor connections to Core Operations -->
+        <mxCell id="conn-merchant" value="" style="endArrow=none;html=1;strokeColor=#94A3B8;strokeWidth=2;entryX=0;entryY=0.5;exitX=1;exitY=0.5;" edge="1" parent="1" source="actor-merchant" target="uc-create-merchant">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-tx" value="" style="endArrow=none;html=1;strokeColor=#94A3B8;strokeWidth=2;entryX=0;entryY=0.5;exitX=1;exitY=0.5;" edge="1" parent="1" source="actor-merchant" target="uc-create-transaction">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-auth" value="" style="endArrow=none;html=1;strokeColor=#94A3B8;strokeWidth=2;entryX=0;entryY=0.5;exitX=1;exitY=0.5;" edge="1" parent="1" source="actor-merchant" target="uc-authorize">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-retry" value="" style="endArrow=none;html=1;strokeColor=#94A3B8;strokeWidth=2;entryX=0;entryY=0.5;exitX=1;exitY=0.5;" edge="1" parent="1" source="actor-merchant" target="uc-retry">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-list" value="" style="endArrow=none;html=1;strokeColor=#94A3B8;strokeWidth=2;entryX=0;entryY=0.5;exitX=1;exitY=0.5;" edge="1" parent="1" source="actor-merchant" target="uc-list-transactions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-detail" value="" style="endArrow=none;html=1;strokeColor=#94A3B8;strokeWidth=2;entryX=0;entryY=0.5;exitX=1;exitY=0.5;" edge="1" parent="1" source="actor-merchant" target="uc-view-transaction">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-audit" value="" style="endArrow=none;html=1;strokeColor=#94A3B8;strokeWidth=2;entryX=0;entryY=0.5;exitX=1;exitY=0.5;" edge="1" parent="1" source="actor-merchant" target="uc-view-audit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-auths" value="" style="endArrow=none;html=1;strokeColor=#94A3B8;strokeWidth=2;entryX=0;entryY=0.5;exitX=1;exitY=0.5;" edge="1" parent="1" source="actor-merchant" target="uc-list-auths">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Relationships between Use Cases -->
+        <mxCell id="rel-include1" value="&lt;&lt;include&gt;&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B7280;strokeWidth=1;dashed=1;fontColor=#6B7280;fontSize=10;endArrow=open;endFill=0;" edge="1" parent="1" source="uc-authorize" target="uc-view-transaction">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel-extend" value="&lt;&lt;extend&gt;&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#F59E0B;strokeWidth=1.5;dashed=1;fontColor=#B45309;fontSize=10;endArrow=open;endFill=0;" edge="1" parent="1" source="uc-retry" target="uc-authorize">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E2E8F0;strokeWidth=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="550" width="220" height="140" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend-title" value="Legend" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#1E293B;fontStyle=1;spacingLeft=15;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="860" y="555" width="80" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="leg-1" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="870" y="590" width="18" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-1-text" value="Write / Mutate operations" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="898" y="588" width="160" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="leg-2" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#10B981;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="870" y="618" width="18" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-2-text" value="Approval flow" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="898" y="616" width="160" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="leg-3" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F59E0B;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="870" y="646" width="18" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-3-text" value="Error recovery / Retry" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="898" y="644" width="160" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="leg-4" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F5F3FF;strokeColor=#8B5CF6;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="870" y="674" width="18" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-4-text" value="Read / Query operations" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="898" y="672" width="160" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram id="sequence-diagram" name="Sequence Diagram - Authorization">
+    <mxGraphModel dx="1422" dy="764" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="s0" />
+        <mxCell id="s1" parent="s0" />
+
+        <!-- Background -->
+        <mxCell id="s-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#E2E8F0;strokeWidth=2;" vertex="1" parent="s1">
+          <mxGeometry x="30" y="20" width="1330" height="850" as="geometry" />
+        </mxCell>
+
+        <!-- Header -->
+        <mxCell id="s-header-bar" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1E293B;strokeColor=none;" vertex="1" parent="s1">
+          <mxGeometry x="30" y="20" width="1330" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s-title-main" value="Transaction Authorization Flow" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontColor=#F8FAFC;fontStyle=1;spacingLeft=20;" vertex="1" parent="s1">
+          <mxGeometry x="60" y="25" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s-title-sub" value="Sequence Diagram — Happy path + Error handling with Audit Trail" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#94A3B8;spacingLeft=20;" vertex="1" parent="s1">
+          <mxGeometry x="60" y="55" width="500" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- ===== LIFELINES ===== -->
+
+        <!-- Client Lifeline -->
+        <mxCell id="s-lane-client" value="CLIENT&#xa;(Frontend)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#DBEAFE;strokeColor=#3B82F6;strokeWidth=2;fontColor=#1E40AF;fontSize=11;fontStyle=1;rounded=1;" vertex="1" parent="s1">
+          <mxGeometry x="100" y="110" width="120" height="720" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s-lane-client-line" value="" style="endArrow=none;html=1;strokeColor=#3B82F6;strokeWidth=1.5;dashed=1;" edge="1" parent="s1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="160" y="200" as="sourcePoint" />
+            <mxPoint x="160" y="830" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Backend Lifeline -->
+        <mxCell id="s-lane-backend" value="BACKEND API&#xa;(NestJS)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#D1FAE5;strokeColor=#10B981;strokeWidth=2;fontColor=#065F46;fontSize=11;fontStyle=1;rounded=1;" vertex="1" parent="s1">
+          <mxGeometry x="340" y="110" width="120" height="720" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s-lane-backend-line" value="" style="endArrow=none;html=1;strokeColor=#10B981;strokeWidth=1.5;dashed=1;" edge="1" parent="s1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="200" as="sourcePoint" />
+            <mxPoint x="400" y="830" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Audit Lifeline -->
+        <mxCell id="s-lane-audit" value="AUDIT SERVICE" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#EDE9FE;strokeColor=#8B5CF6;strokeWidth=2;fontColor=#5B21B6;fontSize=11;fontStyle=1;rounded=1;" vertex="1" parent="s1">
+          <mxGeometry x="580" y="110" width="120" height="720" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s-lane-audit-line" value="" style="endArrow=none;html=1;strokeColor=#8B5CF6;strokeWidth=1.5;dashed=1;" edge="1" parent="s1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="640" y="200" as="sourcePoint" />
+            <mxPoint x="640" y="830" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Database Lifeline -->
+        <mxCell id="s-lane-db" value="DATABASE&#xa;(PostgreSQL)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#FEF3C7;strokeColor=#F59E0B;strokeWidth=2;fontColor=#92400E;fontSize=11;fontStyle=1;rounded=1;" vertex="1" parent="s1">
+          <mxGeometry x="820" y="110" width="120" height="720" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s-lane-db-line" value="" style="endArrow=none;html=1;strokeColor=#F59E0B;strokeWidth=1.5;dashed=1;" edge="1" parent="s1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="880" y="200" as="sourcePoint" />
+            <mxPoint x="880" y="830" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Acquirer Lifeline -->
+        <mxCell id="s-lane-acquirer" value="ACQUIRER&#xa;(Mock Gateway)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#FFEDD5;strokeColor=#F97316;strokeWidth=2;fontColor=#9A3412;fontSize=11;fontStyle=1;rounded=1;" vertex="1" parent="s1">
+          <mxGeometry x="1060" y="110" width="120" height="720" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s-lane-acquirer-line" value="" style="endArrow=none;html=1;strokeColor=#F97316;strokeWidth=1.5;dashed=1;" edge="1" parent="s1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1120" y="200" as="sourcePoint" />
+            <mxPoint x="1120" y="830" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ===== ACTIVATION BARS ===== -->
+        <!-- Client activation -->
+        <mxCell id="act-client-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#93C5FD;strokeColor=#3B82F6;strokeWidth=1;" vertex="1" parent="s1">
+          <mxGeometry x="152" y="200" width="16" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="act-client-2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#93C5FD;strokeColor=#3B82F6;strokeWidth=1;" vertex="1" parent="s1">
+          <mxGeometry x="152" y="770" width="16" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Backend activation -->
+        <mxCell id="act-backend-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6EE7B7;strokeColor=#10B981;strokeWidth=1;" vertex="1" parent="s1">
+          <mxGeometry x="392" y="200" width="16" height="560" as="geometry" />
+        </mxCell>
+
+        <!-- Audit activation -->
+        <mxCell id="act-audit-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C4B5FD;strokeColor=#8B5CF6;strokeWidth=1;" vertex="1" parent="s1">
+          <mxGeometry x="632" y="330" width="16" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="act-audit-2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C4B5FD;strokeColor=#8B5CF6;strokeWidth=1;" vertex="1" parent="s1">
+          <mxGeometry x="632" y="480" width="16" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="act-audit-3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C4B5FD;strokeColor=#8B5CF6;strokeWidth=1;" vertex="1" parent="s1">
+          <mxGeometry x="632" y="620" width="16" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- DB activation -->
+        <mxCell id="act-db-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCD34D;strokeColor=#F59E0B;strokeWidth=1;" vertex="1" parent="s1">
+          <mxGeometry x="872" y="240" width="16" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="act-db-2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCD34D;strokeColor=#F59E0B;strokeWidth=1;" vertex="1" parent="s1">
+          <mxGeometry x="872" y="370" width="16" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="act-db-3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCD34D;strokeColor=#F59E0B;strokeWidth=1;" vertex="1" parent="s1">
+          <mxGeometry x="872" y="520" width="16" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="act-db-4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCD34D;strokeColor=#F59E0B;strokeWidth=1;" vertex="1" parent="s1">
+          <mxGeometry x="872" y="660" width="16" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Acquirer activation -->
+        <mxCell id="act-acquirer-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDBA74;strokeColor=#F97316;strokeWidth=1;" vertex="1" parent="s1">
+          <mxGeometry x="1112" y="420" width="16" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ===== MESSAGES ===== -->
+
+        <!-- 1. Client -> Backend -->
+        <mxCell id="m1" value="1. POST /authorizeTransaction&#xa;{ transactionId, cardToken }" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;strokeColor=#1E293B;strokeWidth=2;fontColor=#374151;fontSize=10;labelBackgroundColor=#F8FAFC;" edge="1" parent="s1" target="act-backend-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="168" y="205" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 2. Backend -> DB: Check transaction -->
+        <mxCell id="m2" value="2. SELECT * FROM transaction&#xa;WHERE id = ? AND status = 'PENDING'" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;strokeColor=#92400E;strokeWidth=1.5;fontColor=#78350F;fontSize=9;labelBackgroundColor=#F8FAFC;dashed=0;" edge="1" parent="s1" target="act-db-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="408" y="245" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 3. DB -> Backend: Return -->
+        <mxCell id="m3" value="3. Transaction found" style="html=1;verticalAlign=bottom;endArrow=open;endFill=0;dashed=1;entryX=1;entryY=0;strokeColor=#92400E;strokeWidth=1.5;fontColor=#78350F;fontSize=9;labelBackgroundColor=#F8FAFC;" edge="1" parent="s1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="872" y="285" as="sourcePoint" />
+            <mxPoint x="408" y="285" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ===== Alt Frame: Approval Path ===== -->
+        <mxCell id="alt-approval-frame" value="APPROVED PATH" style="shape=frame;html=1;strokeColor=#10B981;strokeWidth=2;fillColor=#F0FDF4;rounded=1;fontColor=#065F46;fontStyle=1;fontSize=11;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;spacingTop=5;" vertex="1" parent="s1">
+          <mxGeometry x="150" y="310" width="1080" height="230" as="geometry" />
+        </mxCell>
+
+        <!-- 4. Backend -> Audit -->
+        <mxCell id="m4" value="4. logEvent(&#xa;  'AUTHORIZATION_STARTED'&#xa;)" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;strokeColor=#5B21B6;strokeWidth=1.5;fontColor=#5B21B6;fontSize=9;labelBackgroundColor=#F8FAFC;" edge="1" parent="s1" target="act-audit-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="408" y="335" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 5. Audit -> DB -->
+        <mxCell id="m5" value="5. INSERT INTO transaction_event" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;strokeColor=#92400E;strokeWidth=1.5;fontColor=#78350F;fontSize=9;labelBackgroundColor=#F8FAFC;" edge="1" parent="s1" target="act-db-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="648" y="375" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 5b. DB -> Audit: Ack -->
+        <mxCell id="m5b" value="OK" style="html=1;verticalAlign=bottom;endArrow=open;endFill=0;dashed=1;entryX=1;entryY=0;strokeColor=#92400E;strokeWidth=1;fontColor=#78350F;fontSize=8;labelBackgroundColor=#F8FAFC;" edge="1" parent="s1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="872" y="415" as="sourcePoint" />
+            <mxPoint x="648" y="415" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 6. Backend -> Acquirer -->
+        <mxCell id="m6" value="6. Authorization Request&#xa;{ amount: 75.50, currency: 'USD',&#xa;  cardToken: 'tok_test_123' }" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;strokeColor=#9A3412;strokeWidth=1.5;fontColor=#9A3412;fontSize=9;labelBackgroundColor=#F8FAFC;" edge="1" parent="s1" target="act-acquirer-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="408" y="425" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 7. Acquirer -> Backend -->
+        <mxCell id="m7" value="7. { approved: true,&#xa;  authId: 'acq_xxx',&#xa;  errorCode: null }" style="html=1;verticalAlign=bottom;endArrow=open;endFill=0;dashed=1;entryX=1;entryY=0;strokeColor=#9A3412;strokeWidth=1.5;fontColor=#9A3412;fontSize=9;labelBackgroundColor=#F8FAFC;" edge="1" parent="s1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1112" y="495" as="sourcePoint" />
+            <mxPoint x="408" y="495" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 8. Backend -> Audit -->
+        <mxCell id="m8" value="8. logEvent(&#xa;  'TRANSACTION_APPROVED'&#xa;)" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;strokeColor=#5B21B6;strokeWidth=1.5;fontColor=#5B21B6;fontSize=9;labelBackgroundColor=#F8FAFC;" edge="1" parent="s1" target="act-audit-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="408" y="525" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 9. Audit -> DB -->
+        <mxCell id="m9" value="9. INSERT INTO transaction_event" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;strokeColor=#92400E;strokeWidth=1.5;fontColor=#78350F;fontSize=9;labelBackgroundColor=#F8FAFC;" edge="1" parent="s1" target="act-db-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="648" y="565" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 9b. DB -> Audit -->
+        <mxCell id="m9b" value="OK" style="html=1;verticalAlign=bottom;endArrow=open;endFill=0;dashed=1;entryX=1;entryY=0;strokeColor=#92400E;strokeWidth=1;fontColor=#78350F;fontSize=8;labelBackgroundColor=#F8FAFC;" edge="1" parent="s1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="872" y="605" as="sourcePoint" />
+            <mxPoint x="648" y="605" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Backend internal: Update status -->
+        <mxCell id="m-update" value="UPDATE transaction SET&#xa;status = 'APPROVED'" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;strokeColor=#92400E;strokeWidth=1.5;fontColor=#78350F;fontSize=9;labelBackgroundColor=#F8FAFC;" edge="1" parent="s1" target="act-db-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="408" y="665" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 10. Backend -> Client -->
+        <mxCell id="m10" value="10. { success: true,&#xa;  authorizationId: '...',&#xa;  message: 'Transaction approved' }" style="html=1;verticalAlign=bottom;endArrow=open;endFill=0;dashed=1;entryX=0;entryY=0;strokeColor=#1E293B;strokeWidth=2;fontColor=#374151;fontSize=10;labelBackgroundColor=#F8FAFC;" edge="1" parent="s1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="392" y="775" as="sourcePoint" />
+            <mxPoint x="168" y="775" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ===== Declined Alt Frame ===== -->
+        <mxCell id="alt-declined-frame" value="DECLINED PATH (Alternative)" style="shape=frame;html=1;strokeColor=#EF4444;strokeWidth=2;fillColor=#FEF2F2;rounded=1;fontColor=#991B1B;fontStyle=1;fontSize=11;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;spacingTop=5;" vertex="1" parent="s1">
+          <mxGeometry x="150" y="560" width="1080" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- Note -->
+        <mxCell id="note-declined" value="Note: The declined path follows the same&#xa;audit trail pattern — logs TRANSACTION_DECLINED&#xa;event with errorCode before returning to client." style="shape=note;whiteSpace=wrap;html=1;fillColor=#FEF2F2;strokeColor=#EF4444;strokeWidth=1.5;fontColor=#991B1B;fontSize=9;size=14;spacingLeft=10;" vertex="1" parent="s1">
+          <mxGeometry x="160" y="620" width="280" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Step numbers legend -->
+        <mxCell id="step-legend" value="Step Execution Order" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#1E293B;fontStyle=1;" vertex="1" parent="s1">
+          <mxGeometry x="60" y="840" width="160" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Color legend -->
+        <mxCell id="legend-box-s" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E2E8F0;strokeWidth=1;shadow=1;" vertex="1" parent="s1">
+          <mxGeometry x="1130" y="810" width="210" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sl-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3B82F6;strokeColor=none;" vertex="1" parent="s1">
+          <mxGeometry x="1145" y="820" width="12" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="sl-1t" value="Client" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#475569;" vertex="1" parent="s1">
+          <mxGeometry x="1163" y="818" width="40" height="16" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sl-2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#10B981;strokeColor=none;" vertex="1" parent="s1">
+          <mxGeometry x="1145" y="838" width="12" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="sl-2t" value="Backend" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#475569;" vertex="1" parent="s1">
+          <mxGeometry x="1163" y="836" width="45" height="16" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sl-3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8B5CF6;strokeColor=none;" vertex="1" parent="s1">
+          <mxGeometry x="1210" y="820" width="12" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="sl-3t" value="Audit" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#475569;" vertex="1" parent="s1">
+          <mxGeometry x="1228" y="818" width="40" height="16" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sl-4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F59E0B;strokeColor=none;" vertex="1" parent="s1">
+          <mxGeometry x="1210" y="838" width="12" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="sl-4t" value="Database" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#475569;" vertex="1" parent="s1">
+          <mxGeometry x="1228" y="836" width="50" height="16" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sl-5" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F97316;strokeColor=none;" vertex="1" parent="s1">
+          <mxGeometry x="1275" y="820" width="12" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="sl-5t" value="Acquirer" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#475569;" vertex="1" parent="s1">
+          <mxGeometry x="1293" y="818" width="50" height="16" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
