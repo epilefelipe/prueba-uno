@@ -1,25 +1,25 @@
 # Payment Processing Service
 
-A full-stack payment processing platform built with NestJS, GraphQL, PostgreSQL, and React. Handles payment authorization, retry logic, idempotency, and complete audit trail for merchant transactions.
+Plataforma full-stack para procesamiento de pagos construida con NestJS, GraphQL, PostgreSQL y React. Maneja autorización de pagos, lógica de reintentos, idempotencia y trazabilidad completa para transacciones de comercios.
 
 ---
 
-## Architecture Overview
+## Arquitectura de Alto Nivel
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                         CLIENT LAYER                                 │
+│                         CAPA DE CLIENTE                               │
 │                                                                      │
 │   ┌──────────────────────┐          ┌──────────────────────────┐    │
-│   │   React Frontend     │          │   External Merchants     │    │
-│   │   (Vite + TanStack)  │          │   (REST API clients)     │    │
+│   │   React Frontend     │          │   Comercios Externos     │    │
+│   │   (Vite + TanStack)  │          │   (Clientes REST API)    │    │
 │   └──────────┬───────────┘          └────────────┬─────────────┘    │
 │              │                                    │                  │
 └──────────────┼────────────────────────────────────┼──────────────────┘
                │                                    │
                ▼                                    ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                        API LAYER                                     │
+│                         CAPA DE API                                   │
 │                                                                      │
 │   ┌──────────────────────────┐     ┌────────────────────────────┐   │
 │   │   GraphQL API (Apollo)   │     │   REST API (Payment Ctrl)  │   │
@@ -31,30 +31,30 @@ A full-stack payment processing platform built with NestJS, GraphQL, PostgreSQL,
                │                                    │
                ▼                                    ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                     BUSINESS LOGIC LAYER                             │
+│                      CAPA DE LÓGICA DE NEGOCIO                        │
 │                                                                      │
 │   ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  │
 │   │ TransactionSvc   │  │ AuthorizationSvc │  │   MerchantSvc    │  │
-│   │ - Create         │  │ - Authorize      │  │ - CRUD           │  │
-│   │ - Idempotency    │  │ - Retry          │  │ - API Keys       │  │
-│   │ - Status mgmt    │  │ - Acquirer mock  │  │ - Validation     │  │
-│   │ - Amount checks  │  │ - Backoff retry  │  │                  │  │
+│   │ - Crear tx       │  │ - Autorizar      │  │ - CRUD           │  │
+│   │ - Idempotencia   │  │ - Reintentos     │  │ - API Keys       │  │
+│   │ - Gestión estado │  │ - Acquirer mock  │  │ - Validaciones   │  │
+│   │ - Validaciones   │  │ - Backoff exp.   │  │                  │  │
 │   └────────┬─────────┘  └────────┬─────────┘  └────────┬─────────┘  │
 │            │                      │                      │            │
 │            └──────────────────────┼──────────────────────┘            │
 │                                   │                                   │
 │                        ┌──────────▼──────────┐                        │
 │                        │   AuditService      │                        │
-│                        │ - Event logging     │                        │
-│                        │ - State tracking    │                        │
-│                        │ - Correlation       │                        │
+│                        │ - Registro eventos  │                        │
+│                        │ - Trazabilidad      │                        │
+│                        │ - Correlación       │                        │
 │                        └──────────┬──────────┘                        │
 │                                   │                                   │
 └───────────────────────────────────┼───────────────────────────────────┘
                                     │
                                     ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      DATA LAYER                                      │
+│                         CAPA DE DATOS                                 │
 │                                                                      │
 │   ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  │
 │   │   Merchant       │  │   Transaction    │  │ Authorization    │  │
@@ -71,52 +71,52 @@ A full-stack payment processing platform built with NestJS, GraphQL, PostgreSQL,
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-## Transaction Flow
+## Flujo de Transacción
 
 ```
-Merchant/Frontend                    Backend                        Acquirer (Mock)
+Comercio/Frontend                    Backend                        Acquirer (Mock)
       │                                │                                │
       │  POST /payments                │                                │
       │  {merchantId, amount,          │                                │
       │   currency, cardToken}         │                                │
       │───────────────────────────────►│                                │
       │                                │                                │
-      │                                │ 1. Validate input              │
-      │                                │    - Amount > 0, <= 100,000    │
-      │                                │    - Currency supported        │
-      │                                │    - Card token format (tok_)  │
+      │                                │ 1. Validar entrada             │
+      │                                │    - Monto > 0, <= 100,000    │
+      │                                │    - Moneda soportada          │
+      │                                │    - Formato token (tok_)      │
       │                                │                                │
-      │                                │ 2. Check idempotency           │
-      │                                │    - By externalOrderId        │
-      │                                │    - By idempotencyKey         │
+      │                                │ 2. Verificar idempotencia      │
+      │                                │    - Por externalOrderId       │
+      │                                │    - Por idempotencyKey        │
       │                                │                                │
-      │                                │ 3. Create transaction          │
-      │                                │    Status: PENDING             │
+      │                                │ 3. Crear transacción           │
+      │                                │    Estado: PENDING             │
       │                                │                                │
-      │                                │ 4. Log audit event             │
+      │                                │ 4. Registrar evento auditoría  │
       │                                │    TRANSACTION_CREATED         │
       │                                │                                │
-      │                                │ 5. Start authorization         │
-      │                                │    Status: PROCESSING          │
+      │                                │ 5. Iniciar autorización        │
+      │                                │    Estado: PROCESSING          │
       │                                │    Log: AUTHORIZATION_STARTED  │
       │                                │                                │
-      │                                │ 6. Send to acquirer ──────────────────────────►
+      │                                │ 6. Enviar al acquirer ──────────────────────►
       │                                │                                │
-      │                                │                                │ (random 70% approval)
+      │                                │                                │ (70% aprobación aleatoria)
       │                                │                                │
       │                                │◄────────────────────────────── │
-      │                                │ 7. Response: approved/declined │
+      │                                │ 7. Respuesta: aprobado/rechaz. │
       │                                │                                │
-      │                                │ 8. Log acquirer events         │
+      │                                │ 8. Registrar eventos acquirer  │
       │                                │    ACQUIRER_REQUEST_SENT       │
       │                                │    ACQUIRER_RESPONSE_RECEIVED  │
       │                                │                                │
-      │                                │ 9. Update transaction status   │
+      │                                │ 9. Actualizar estado tx        │
       │                                │    APPROVED / DECLINED / FAILED│
       │                                │                                │
-      │                                │ 10. Log final event            │
+      │                                │ 10. Registrar evento final     │
       │                                │     TRANSACTION_APPROVED       │
-      │                                │     or TRANSACTION_DECLINED    │
+      │                                │     o TRANSACTION_DECLINED     │
       │                                │                                │
       │◄───────────────────────────────│                                │
       │  {id, status, authorizationId, │                                │
@@ -124,38 +124,38 @@ Merchant/Frontend                    Backend                        Acquirer (Mo
       │                                │                                │
 ```
 
-## Features
+## Funcionalidades
 
-### Core Functionality
-- **Payment Creation** — REST `POST /payments` or GraphQL `createTransaction` mutation
-- **Authorization** — Simulated acquirer gateway with 70% approval rate
-- **Retry Logic** — Automatic retry with exponential backoff (up to 3 attempts)
-- **Idempotency** — Prevents duplicate transactions via `externalOrderId` and `idempotencyKey`
-- **Audit Trail** — Complete event history for every transaction state change
+### Núcleo del Sistema
+- **Creación de Pagos** — REST `POST /payments` o GraphQL `createTransaction` mutation
+- **Autorización** — Gateway de adquirente simulado con 70% de tasa de aprobación
+- **Reintentos** — Reintento automático con backoff exponencial (hasta 3 intentos)
+- **Idempotencia** — Previene transacciones duplicadas mediante `externalOrderId` e `idempotencyKey`
+- **Audit Trail** — Historial completo de eventos para cada cambio de estado
 
-### Validation
-- Amount must be positive and ≤ 100,000
-- Currency must be supported (USD, EUR, GBP, MXN, BRL, ARS, COP)
-- Card token must start with `tok_` prefix and be ≥ 8 characters
-- Input validation via class-validator decorators
+### Validaciones
+- El monto debe ser positivo y ≤ 100,000
+- La moneda debe estar soportada (USD, EUR, GBP, MXN, BRL, ARS, COP)
+- El token de tarjeta debe comenzar con `tok_` y tener ≥ 8 caracteres
+- Validación de entrada mediante decoradores de `class-validator`
 
-### Transaction States
+### Estados de Transacción
 ```
 PENDING → PROCESSING → APPROVED
                       → DECLINED
                       → FAILED
 ```
 
-### API Endpoints
+## API Endpoints
 
-#### REST
+### REST
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `POST` | `/payments` | Create and authorize a payment |
 | `GET` | `/payments` | List all payments (optional `?merchant_id=`, `?status=`) |
 | `GET` | `/payments/:id` | Get payment by ID |
 
-#### GraphQL (`/graphql`)
+### GraphQL (`/graphql`)
 | Type | Operation | Description |
 |------|-----------|-------------|
 | Mutation | `createMerchant` | Register a new merchant |
@@ -168,36 +168,36 @@ PENDING → PROCESSING → APPROVED
 | Query | `transactionEvents` | Get audit events for a transaction |
 | Query | `authorizationsByTransaction` | Get authorization history |
 
-## Tech Stack
+## Stack Tecnológico
 
-| Layer | Technology |
-|-------|-----------|
+| Capa | Tecnología |
+|------|-----------|
 | **Backend** | NestJS, GraphQL (Apollo), TypeORM, REST |
-| **Database** | PostgreSQL 17 |
+| **Base de datos** | PostgreSQL 17 |
 | **Frontend** | React, Vite, TanStack Query, TailwindCSS |
-| **Containerization** | Docker, Docker Compose |
-| **Validation** | class-validator, class-transformer |
+| **Contenedores** | Docker, Docker Compose |
+| **Validación** | class-validator, class-transformer |
 
-## Project Structure
+## Estructura del Proyecto
 
 ```
 payment-platform/
 ├── docker-compose.yml
 ├── docs/
-│   └── diagrams.drawio          # Architecture & sequence diagrams
+│   └── diagrams.drawio          # Diagramas de arquitectura y secuencia
 ├── backend/
 │   ├── src/
-│   │   ├── main.ts              # Entry point (CORS, validation, request ID)
+│   │   ├── main.ts              # Punto de entrada (CORS, validación, request ID)
 │   │   ├── app.module.ts
 │   │   ├── config/
 │   │   │   └── typeorm.config.ts
 │   │   └── modules/
-│   │       ├── merchant/        # Merchant CRUD + API key generation
-│   │       ├── transaction/     # Transaction creation + idempotency
-│   │       ├── authorization/   # Payment authorization + retry logic
-│   │       ├── audit/           # Event trail logging
-│   │       └── payment/         # REST controller for /payments
-│   ├── Dockerfile               # Multi-stage build (Node 22 Alpine)
+│   │       ├── merchant/        # CRUD de comercios + generación de API keys
+│   │       ├── transaction/     # Creación de transacciones + idempotencia
+│   │       ├── authorization/   # Autorización de pagos + lógica de reintentos
+│   │       ├── audit/           # Registro de eventos de trazabilidad
+│   │       └── payment/         # Controlador REST para /payments
+│   ├── Dockerfile               # Build multi-stage (Node 22 Alpine)
 │   └── package.json
 ├── frontend/
 │   ├── src/
@@ -212,31 +212,31 @@ payment-platform/
 │   │   │   └── graphql-client.ts
 │   │   └── types/
 │   │       └── index.ts
-│   ├── Dockerfile               # Multi-stage build (Node + Nginx)
+│   ├── Dockerfile               # Build multi-stage (Node + Nginx)
 │   └── package.json
-├── test-audit.js                # GraphQL audit trail test
-└── test-rest.js                 # REST API integration test
+├── test-audit.js                # Test de auditoría vía GraphQL
+└── test-rest.js                 # Test de integración REST API
 ```
 
-## Quick Start
+## Inicio Rápido
 
-### Prerequisites
+### Prerrequisitos
 - Docker & Docker Compose
-- Node.js 22+ (for local development)
+- Node.js 22+ (para desarrollo local)
 
-### Docker (Recommended)
+### Docker (Recomendado)
 ```bash
-# Start all services
+# Iniciar todos los servicios
 docker compose up -d --build
 
-# View logs
+# Ver logs
 docker compose logs -f backend
 
-# Stop all services
+# Detener todos los servicios
 docker compose down
 ```
 
-### Local Development
+### Desarrollo Local
 ```bash
 # Backend
 cd backend
@@ -249,54 +249,54 @@ npm install
 npm run dev
 ```
 
-### Access Points
+### Puntos de Acceso
 - **Frontend**: http://localhost
 - **GraphQL Playground**: http://localhost:3000/graphql
 - **REST API**: http://localhost:3000/payments
-- **Database**: localhost:5432 (PostgreSQL)
+- **Base de datos**: localhost:5432 (PostgreSQL)
 
 ## Testing
 
-### REST API Tests
+### Tests REST API
 ```bash
 docker cp test-rest.js payment-platform-backend-1:/tmp/test-rest.js
 docker exec payment-platform-backend-1 node /tmp/test-rest.js
 ```
 
-### GraphQL Audit Trail Tests
+### Tests de Auditoría GraphQL
 ```bash
 docker cp test-audit.js payment-platform-backend-1:/tmp/test-audit.js
 docker exec payment-platform-backend-1 node /tmp/test-audit.js
 ```
 
-## Environment Variables
+## Variables de Entorno
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `POSTGRES_USER` | `postgres` | Database user |
-| `POSTGRES_PASSWORD` | `postgres` | Database password |
-| `POSTGRES_DB` | `payment_db` | Database name |
-| `DB_HOST` | `db` | Database host (Docker service name) |
-| `DB_PORT` | `5432` | Database port |
-| `NODE_ENV` | `development` | Application environment |
-| `FRONTEND_URL` | `http://localhost:5173` | CORS allowed origin |
+| Variable | Valor por defecto | Descripción |
+|----------|-------------------|-------------|
+| `POSTGRES_USER` | `postgres` | Usuario de base de datos |
+| `POSTGRES_PASSWORD` | `postgres` | Contraseña de base de datos |
+| `POSTGRES_DB` | `payment_db` | Nombre de la base de datos |
+| `DB_HOST` | `db` | Host de la base de datos (nombre del servicio Docker) |
+| `DB_PORT` | `5432` | Puerto de la base de datos |
+| `NODE_ENV` | `development` | Entorno de la aplicación |
+| `FRONTEND_URL` | `http://localhost:5173` | Origen permitido para CORS |
 
-## Design Decisions
+## Decisiones de Diseño
 
-### Hybrid API (REST + GraphQL)
-- **REST** (`POST /payments`) for external merchants who need a simple, standard HTTP API
-- **GraphQL** for the frontend dashboard with complex queries, filtering, and real-time data needs
+### API Híbrida (REST + GraphQL)
+- **REST** (`POST /payments`) para comercios externos que necesitan una API HTTP simple y estándar
+- **GraphQL** para el dashboard interno con consultas complejas, filtrado y necesidades de datos en tiempo real
 
-### Repository Pattern
-Each domain entity has an interface-based repository, making it easy to swap implementations or add caching later without touching business logic.
+### Patrón Repositorio
+Cada entidad de dominio tiene un repositorio basado en interfaces, lo que facilita cambiar implementaciones o agregar caching más adelante sin tocar la lógica de negocio.
 
-### Audit Trail as Separate Module
-Audit events are logged by injecting `AuditService` into business services. This keeps the audit concern separate while maintaining full traceability of every state change.
+### Audit Trail como Módulo Independiente
+Los eventos de auditoría se registran inyectando `AuditService` en los servicios de negocio. Esto mantiene la preocupación de auditoría separada mientras se conserva trazabilidad completa de cada cambio de estado.
 
-### Idempotency Strategy
-Double-layer protection:
-1. **By `externalOrderId`** — Same merchant + same order ID returns existing transaction
-2. **By `idempotencyKey`** — Unique key prevents duplicate processing across retries
+### Estrategia de Idempotencia
+Protección en dos capas:
+1. **Por `externalOrderId`** — Mismo comercio + mismo order ID devuelve la transacción existente
+2. **Por `idempotencyKey`** — Clave única previene procesamiento duplicado a través de reintentos
 
-### Retry with Exponential Backoff
-When the acquirer fails (network error, timeout), the system retries up to 3 times with increasing delays (1s, 2s, 4s). Business-level declines (insufficient funds) are NOT retried automatically — they require explicit `retryAuthorization`.
+### Reintento con Backoff Exponencial
+Cuando el acquirer falla (error de red, timeout), el sistema reintenta hasta 3 veces con delays crecientes (1s, 2s, 4s). Los rechazos a nivel de negocio (fondos insuficientes) NO se reintentan automáticamente — requieren una llamada explícita a `retryAuthorization`.
